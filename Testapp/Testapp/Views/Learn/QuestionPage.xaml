@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Testapp.Views.QuestionPage"
+             Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15" Margin="10   ">
+            <Label Text="{Binding Text}" FontSize="Small"/>
+
+            <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="450">
+                <Image Source="{Binding ImageUrl}"
+                       Aspect="Fill"
+                    RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 0}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 1}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}">
+                </Image>
+                <BoxView Color="Gray" x:Name="topView1" IsVisible="{Binding IsVisRollo}"
+                    RelativeLayout.XConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 0}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 1}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ImageGestureRecognizer}"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                <BoxView Color="Transparent" x:Name="topView" 
+                     RelativeLayout.XConstraint= "{Binding XConstraint}"
+                    RelativeLayout.YConstraint="{Binding YConstraint}"
+                    RelativeLayout.HeightConstraint="{Binding HeightConstraint}"
+                    RelativeLayout.WidthConstraint="{Binding WidthConstraint}">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapGestureRecognizer}" CommandParameter="{Binding ID}"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                <BoxView Color="{Binding ResultColor}" RelativeLayout.XConstraint= "{Binding XConstraint}" RelativeLayout.YConstraint="{Binding YConstraint}" RelativeLayout.HeightConstraint="{Binding HeightConstraint}" RelativeLayout.WidthConstraint="3"></BoxView>
+                <BoxView Color="{Binding ResultColor}" RelativeLayout.XConstraint= "{Binding XConstraint}" RelativeLayout.YConstraint="{Binding YConstraint}" RelativeLayout.HeightConstraint="3" RelativeLayout.WidthConstraint="{Binding WidthConstraint}"></BoxView>
+                <BoxView Color="{Binding ResultColor}" RelativeLayout.XConstraint= "{Binding RightConstraint}" RelativeLayout.YConstraint="{Binding YConstraint}" RelativeLayout.HeightConstraint="{Binding HeightConstraint}" RelativeLayout.WidthConstraint="3"></BoxView>
+                <BoxView Color="{Binding ResultColor}" RelativeLayout.XConstraint= "{Binding XConstraint}" RelativeLayout.YConstraint="{Binding BottomConstraint}" RelativeLayout.HeightConstraint="3" RelativeLayout.WidthConstraint="{Binding WidthConstraint}"></BoxView>
+            </RelativeLayout>
+
+            <Button Text="Weiter" Command="{Binding NextQuestion}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
